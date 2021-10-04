@@ -2,9 +2,60 @@
 <html lang="en">
     <head>
         <script src="index.js"></script>
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
-        
+        <body>
+            <header>
+              <h2>Superhero Lister</h2>
+            </header>
+
+            <!-- Superheros -->
+            <div id="superhero-container">
+                <!-- Superheros Images here -->
+            </div>
+            
+            <!-- Superhero details -->
+            <div id="superhero-details">
+                <img class="superhero-image" src="" alt="insert superhero image here"/>
+                <h2 class="superhero-name">Insert Name Here</h2>
+                <h3 class="full-name">Insert Full Name Here</h3>
+                <h3 class="powerstats">Insert Restaurant Here</h3>
+                <h3 class="publisher">Insert Publisher Here</h3>
+                <h3 class="alias">Insert Alias Here</h3>
+            </div>
+
+            <!-- like bttn dislike bttn form: with a submit button and input fields -->
+            <div id ='like-bttn'>
+                <button id='like'>Super Like! <i class="fas fa-thumbs-up"></i>
+                </button>
+            </div>
+
+
+            <div id ='dislike-bttn'>
+                <button id='dislike'>Villainous Dislike! <i class="fas fa-thumbs-down"></i>
+                </button>
+            </div>
+
+
+            <div id = 'counter'>
+                <h1>0 Likes</h1>
+            </div>
+
+
+            <form id = 'new-comment'>
+                <h3>Super Comments!</h3>
+                <label for='comment'>Add Comment:</label>
+                <div id ='text-content'>    
+                    <textarea name="new-comment" id="new-comment"></textarea>
+                </div>
+
+                <input type= 'text' name='comment' id='new-comment' placeholder='Do not be evil!'/>
+            
+                <input type='submit'name ='submit-bttn' value='Post'/>
+            </form>
+
+            
+
     </body>
 </html>

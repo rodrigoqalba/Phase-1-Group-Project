@@ -3,7 +3,7 @@ project member - Rodrigo Alba, Steve Risso, and Kerny
 
 1. See 3 random superheroes (with biography, and image)
     - Need 3 img containers
-    - Need container for information(biography, powerstats, and image) 
+    - Need container for information(biography (full name and Superhero Name, Publisher, Aliases), powerstats, and image)
 
 2. User is able like and unlike superhero with the number of likes increasing and decreasing with every click 
     - Have a ‘click’ event listener that will increment or decrement a TOTAL like number. Number will go up if ‘like button’ is clicked and Number will go down if ‘dislike button’  is clicked 

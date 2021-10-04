@@ -1,0 +1,33 @@
+#superhero-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#superhero-details {
+    position: relative;
+}
+
+.superhero-image {
+
+}
+
+.superhero-name {
+
+}
+
+.full-name {
+
+}
+
+.powerstats {
+
+}
+
+.publisher {
+
+}
+
+.alias {
+    
+}
