@@ -1,6 +1,10 @@
 # Phase-1-Group-Project
 project member - Rodrigo Alba, Steve Risso, and Kerny
 
+run this commmand to get the background started:
+
+json-server --watch db.json --routes routes.json
+
 1. See 3 random superheroes (with biography, and image)
     - Need 3 img containers
     - Need container for information(biography (full name and Superhero Name, Publisher, Aliases), powerstats, and image)
