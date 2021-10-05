@@ -25,9 +25,27 @@ let dislikeBttn = document.getElementById('dislike');
 // let count = counter.innerText;
 let h3 = document.getElementById('count');
 
+
 let commentForm = document.getElementById('new-comment');
 let commentBttn = document.getElementById('submit-bttn');
-let commentInput = document.getElementById('new-comment');
+let commentInput = document.getElementById('comment');
+let commentBox = document.getElementById('text-content');
+
+
+
+commentForm.addEventListener('submit', e => {
+    e.preventDefault();
+    let comment = commentInput.value;
+    commentBox.append('  ||  ' + comment);
+    
+})
+
+
+
+
+
+
+
 
 
 likeBttn.addEventListener('click',() => {
@@ -43,13 +61,11 @@ dislikeBttn.addEventListener('click', ()=>{
     let newCount = currNum;
     h3.textContent = newCount;
 })
-function likeAndDislike(){
-    
-}
 
 
 
-searchForm.addEventListener('submit', e =>{
+
+searchForm.addEventListener('submit', e => {
     e.preventDefault();
     let name = searchInput.value
     const searchName_URL = `${baseURL}search/${name}`;
