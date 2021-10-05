@@ -76,7 +76,12 @@ searchForm.addEventListener('submit', e => {
 
     
 })
+
 let superContain = document.getElementById('superhero-container');
+let heroBin = document.getElementById('hero-bin');
+let villainBin = document.getElementById('villain-bin');
+
+
 function renderSuperhero(superhero){
     //insert heroname
     heroName.innerText = superhero.results[0].name;
@@ -95,11 +100,27 @@ function renderSuperhero(superhero){
     stats.innerText = `Intelligence: ${intel}, Strength: ${strength}, Speed: ${speed}, Combat: ${combat}, Power: ${power}`;
     //insert publisher
     publisher.innerText = `Publisher: ${superhero.results[0].biography.publisher}`;
+    
 
-    let img = document.createElement('img');
-    img.src = superhero.results[0].image.url;
+    if(superhero.results[0].biography.alignment === 'good'){
+        let img = document.createElement('img');
+        img.src = superhero.results[0].image.url;
 
-    superContain.append(img);
+        heroBin.append(img);
+    }else if( superhero.results[0].biography.alignment === 'bad'){
+        let img = document.createElement('img');
+        img.src = superhero.results[0].image.url;
+
+        villainBin.append(img);
+    }
+
+
+
+
+    // let img = document.createElement('img');
+    // img.src = superhero.results[0].image.url;
+
+    // superContain.append(img);
 }
 
 
