@@ -36,6 +36,13 @@ likeBttn.addEventListener('click',() => {
     let newCount = currNum;
     h3.textContent= newCount;
 })
+
+dislikeBttn.addEventListener('click', ()=>{
+    let currNum = h3.innerText;
+    currNum--;
+    let newCount = currNum;
+    h3.textContent = newCount;
+})
 function likeAndDislike(){
     
 }
