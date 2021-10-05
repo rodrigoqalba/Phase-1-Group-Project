@@ -3,7 +3,10 @@
     justify-content: center;
     flex-wrap: wrap;
 }
-
+body {
+    color: aquamarine;
+    background-color: black;
+}
 #superhero-details {
     position: relative;
 }

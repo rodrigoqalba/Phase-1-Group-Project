@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang = 'en'>
     <head>
-        <script src="index.js"></script>
+        <script defer src="index.js"></script>
         <link rel="stylesheet" href="styles.css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     </head>
     <body>
-        <body>
             <header>
               <h2>Superhero Lister</h2>
             </header>
 
+            <div id='header-image-container' class='header-content'>
+                <img class='comic1' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ56FyvOhyBATYcg11gT09amB36hUYBk1un7A&usqp=CAU'/>
+                <!-- insert some images above the search box to populate the page -->
+            </div>
+
+            <form id='search-characters'>
+                <input type='text' name='superhero-name' id ='superhero-name' placeholder="Superhero name!"/>
+                <input type='submit' id ='submit' value = 'Search'/>
+            </form>
+        <div id ='card-container'>
             <!-- Superheros -->
             <div id="superhero-container">
                 <!-- Superheros Images here -->
@@ -28,11 +37,15 @@
 
             <!-- like bttn dislike bttn form: with a submit button and input fields -->
             <div id = 'counter'>
-                <h1>0 Likes</h1>
+                <button id='like'>Super Like! <i class="fas fa-thumbs-up"></i>
+                </button>
+                <strong>0 Likes</strong>
+                <button id='dislike'>Villainous Dislike! <i class="fas fa-thumbs-down"></i>
+                </button>
             </div>
 
             
-            <div id ='like-bttn'>
+            <!-- <div id ='like-bttn'>
                 <button id='like'>Super Like! <i class="fas fa-thumbs-up"></i>
                 </button>
             </div>
@@ -41,7 +54,9 @@
             <div id ='dislike-bttn'>
                 <button id='dislike'>Villainous Dislike! <i class="fas fa-thumbs-down"></i>
                 </button>
-            </div>
+            </div> -->
+
+           
 
             <form id = 'new-comment'>
                 <h3>Super Comments!</h3>
@@ -55,7 +70,9 @@
                 <input type='submit'name ='submit-bttn' value='Post'/>
             </form>
 
-            
+        </div> 
 
     </body>
 </html>
+
+
