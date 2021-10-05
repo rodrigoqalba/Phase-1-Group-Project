@@ -42,12 +42,6 @@ commentForm.addEventListener('submit', e => {
 
 
 
-
-
-
-
-
-
 likeBttn.addEventListener('click',() => {
     let currNum = h3.innerText;
     currNum++;
@@ -82,7 +76,7 @@ searchForm.addEventListener('submit', e => {
 
     
 })
-
+let superContain = document.getElementById('superhero-container');
 function renderSuperhero(superhero){
     //insert heroname
     heroName.innerText = superhero.results[0].name;
@@ -101,20 +95,12 @@ function renderSuperhero(superhero){
     stats.innerText = `Intelligence: ${intel}, Strength: ${strength}, Speed: ${speed}, Combat: ${combat}, Power: ${power}`;
     //insert publisher
     publisher.innerText = `Publisher: ${superhero.results[0].biography.publisher}`;
+
+    let img = document.createElement('img');
+    img.src = superhero.results[0].image.url;
+
+    superContain.append(img);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
