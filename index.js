@@ -30,13 +30,16 @@ let commentForm = document.getElementById('new-comment');
 let commentBttn = document.getElementById('submit-bttn');
 let commentInput = document.getElementById('comment');
 let commentBox = document.getElementById('text-content');
-
+let commentList = document.getElementById('comment-list');
 
 
 commentForm.addEventListener('submit', e => {
     e.preventDefault();
+    let li = document.createElement('li');
     let comment = commentInput.value;
-    commentBox.append('  ||  ' + comment);
+    li.append(comment);
+    commentList.appendChild(li);
+    // commentBox.append('  ||  ' + comment);
     
 })
 
