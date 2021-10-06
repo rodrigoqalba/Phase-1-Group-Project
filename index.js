@@ -44,20 +44,44 @@ commentForm.addEventListener('submit', e => {
 })
 
 
+function battle(hero,villain){
+    let heroIntel = hero.results[0].powerstats.intelligence.value;
+    let heroStrength = hero.results[0].powerstats.strength.value;
+    let heroSpeed = hero.results[0].powerstats.speed;
+    let heroCombat = hero.results[0].powerstats.combat;
+    let heroPower = hero.results[0].powerstats.power;
 
-// likeBttn.addEventListener('click',() => {
-//     let currNum = h3.innerText;
-//     currNum++;
-//     let newCount = currNum;
-//     h3.textContent= newCount;
-// })
+    // let villainIntel = villain.results[0].powerstats.intelligence;
+    // let villainStrength = villain.results[0].powerstats.strength;
+    // let villainSpeed = villain.results[0].powerstats.speed;
+    // let villainCombat = villain.results[0].powerstats.combat;
+    // let villainPower = villain.results[0].powerstats.power;
 
-// dislikeBttn.addEventListener('click', ()=>{
-//     let currNum = h3.innerText;
-//     currNum--;
-//     let newCount = currNum;
-//     h3.textContent = newCount;
-// })
+    heroTotal = heroIntel + heroStrength + heroSpeed + heroCombat + heroPower;
+    console.log(heroTotal)
+
+    // villainTotal = villainIntel + villainStrength + villainSpeed + villainCombat + villainPower;
+
+    // if(heroTotal > villainTotal){
+
+    // }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 likeBttn.addEventListener('click',() => {
     let currNum = h3.innerText;
@@ -166,13 +190,17 @@ function renderSuperhero(superhero){
         img.addEventListener('click', () => superClick(superhero))
 
         heroBin.append(img);
+        battle(superhero);
+
     }else if( superhero.results[0].biography.alignment === 'bad'){
+        let villain = superhero;
         let img = document.createElement('img');
         img.src = superhero.results[0].image.url;
 
         img.addEventListener('click', () => superClick(superhero));
 
         villainBin.append(img);
+        battle(superhero,villain);
     }
 
 

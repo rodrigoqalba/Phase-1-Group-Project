@@ -3,7 +3,14 @@
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
   }
-  
+  #hero-bin{
+    text-align: left;
+  }
+  img {
+    width:200px;
+    height:100px;
+    
+  }
   body {
     color: aquamarine;
     padding: 1rem;
