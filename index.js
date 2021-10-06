@@ -80,6 +80,38 @@ searchForm.addEventListener('submit', e => {
 let superContain = document.getElementById('superhero-container');
 let heroBin = document.getElementById('hero-bin');
 let villainBin = document.getElementById('villain-bin');
+   
+
+function superClick(superhero){
+    let card = document.getElementById('card');
+
+    let name = card.querySelector('.superhero-name');
+    name.innerText = superhero.results[0].name;
+
+    let img = card.querySelector('.superhero-image');
+    img.src = superhero.results[0].image.url;
+
+    let fullName = card.querySelector('.full-name');
+    fullName.innerText = `Full Name: ${superhero.results[0].biography['full-name']}`;
+
+    let aliases = card.querySelector('.alias');
+    aliases.innerText = `Known Aliases: ${superhero.results[0].biography.aliases}`;
+
+    let powerstats = card.querySelector('.powerstats');
+        let intel = superhero.results[0].powerstats.intelligence;
+        let strength = superhero.results[0].powerstats.strength;
+        let speed = superhero.results[0].powerstats.speed;
+        let combat = superhero.results[0].powerstats.combat;
+        let power =superhero.results[0].powerstats.power;
+
+    powerstats.innerText = `Intelligence: ${intel}, Strength: ${strength}, Speed: ${speed}, Combat: ${combat}, Power: ${power}`;
+
+    let publisher = card.querySelector('.publisher');
+    publisher.innerText = `Publisher: ${superhero.results[0].biography.publisher}`;
+}
+
+
+
 
 
 function renderSuperhero(superhero){
@@ -100,16 +132,20 @@ function renderSuperhero(superhero){
     stats.innerText = `Intelligence: ${intel}, Strength: ${strength}, Speed: ${speed}, Combat: ${combat}, Power: ${power}`;
     //insert publisher
     publisher.innerText = `Publisher: ${superhero.results[0].biography.publisher}`;
-    
+
 
     if(superhero.results[0].biography.alignment === 'good'){
         let img = document.createElement('img');
         img.src = superhero.results[0].image.url;
 
+        img.addEventListener('click', () => superClick(superhero))
+
         heroBin.append(img);
     }else if( superhero.results[0].biography.alignment === 'bad'){
         let img = document.createElement('img');
         img.src = superhero.results[0].image.url;
+
+        img.addEventListener('click', () => superClick(superhero));
 
         villainBin.append(img);
     }
