@@ -95,7 +95,7 @@ let villainBin = document.getElementById('villain-bin');
 let likeCount = {};
 
 function superClick(superhero){
-    let card = document.getElementById('card');
+    let card = document.getElementById('card-container');
 
     let name = card.querySelector('.superhero-name');
     name.innerText = superhero.results[0].name;
