@@ -42,6 +42,20 @@ commentForm.addEventListener('submit', e => {
 
 
 
+// likeBttn.addEventListener('click',() => {
+//     let currNum = h3.innerText;
+//     currNum++;
+//     let newCount = currNum;
+//     h3.textContent= newCount;
+// })
+
+// dislikeBttn.addEventListener('click', ()=>{
+//     let currNum = h3.innerText;
+//     currNum--;
+//     let newCount = currNum;
+//     h3.textContent = newCount;
+// })
+
 likeBttn.addEventListener('click',() => {
     let currNum = h3.innerText;
     currNum++;
@@ -55,8 +69,6 @@ dislikeBttn.addEventListener('click', ()=>{
     let newCount = currNum;
     h3.textContent = newCount;
 })
-
-
 
 
 searchForm.addEventListener('submit', e => {
@@ -80,7 +92,7 @@ searchForm.addEventListener('submit', e => {
 let superContain = document.getElementById('superhero-container');
 let heroBin = document.getElementById('hero-bin');
 let villainBin = document.getElementById('villain-bin');
-   
+let likeCount = {};
 
 function superClick(superhero){
     let card = document.getElementById('card');
@@ -108,6 +120,9 @@ function superClick(superhero){
 
     let publisher = card.querySelector('.publisher');
     publisher.innerText = `Publisher: ${superhero.results[0].biography.publisher}`;
+
+    let currLikes = card.querySelector('#count');
+    currLikes.innerText = likeCount.value;
 }
 
 
@@ -134,6 +149,13 @@ function renderSuperhero(superhero){
     publisher.innerText = `Publisher: ${superhero.results[0].biography.publisher}`;
 
 
+    let count = document.getElementById('count')
+    let likes = count.innerText;
+    likeCount.key = superhero.results[0].name;
+    likeCount.value = likes;
+
+    
+        
     if(superhero.results[0].biography.alignment === 'good'){
         let img = document.createElement('img');
         img.src = superhero.results[0].image.url;
