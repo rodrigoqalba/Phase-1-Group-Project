@@ -43,10 +43,14 @@ commentForm.addEventListener('submit', e => {
     
 })
 
+// //3 GOALS FOR TOODAY
+// 1.MAKES COMMENTS CARRY WITH EACH card
+// 2.GET THE BATTLE FUNCTION TO Work;
 
-function battle(hero,villain){
-    let heroIntel = hero.results[0].powerstats.intelligence.value;
-    let heroStrength = hero.results[0].powerstats.strength.value;
+
+function calcTotalPower(hero){
+    let heroIntel = hero.results[0].powerstats.intelligence;
+    let heroStrength = hero.results[0].powerstats.strength;
     let heroSpeed = hero.results[0].powerstats.speed;
     let heroCombat = hero.results[0].powerstats.combat;
     let heroPower = hero.results[0].powerstats.power;
@@ -56,9 +60,12 @@ function battle(hero,villain){
     // let villainSpeed = villain.results[0].powerstats.speed;
     // let villainCombat = villain.results[0].powerstats.combat;
     // let villainPower = villain.results[0].powerstats.power;
-
-    heroTotal = heroIntel + heroStrength + heroSpeed + heroCombat + heroPower;
+    heroTotal = parseInt(heroIntel) + parseInt(heroStrength) + parseInt(heroSpeed) + parseInt(heroCombat) + parseInt(heroPower);
+    hero.results[0].Total = heroTotal;
     console.log(heroTotal)
+    console.log(hero)
+
+
 
     // villainTotal = villainIntel + villainStrength + villainSpeed + villainCombat + villainPower;
 
@@ -66,10 +73,29 @@ function battle(hero,villain){
 
     // }
 }
+let fightBttn = document.getElementById('fight-bttn');
+// let heroCard = document.getElementById('hero-card');
+// let villainCard = document.getElementById('villain-card');
+let heroScore = document.getElementById('hero-score');
+let villainScore = document.getElementById('villain-score');
+
+fightBttn.addEventListener('click', () => battle(villainScore,heroScore) )
+
+function battle(villain, hero){
+    
+    if(villain.innerText < hero.innerText){
+        alert("The HEROs are victorious!");
+        
+    }else if(villain.innerText > hero.innerText){
+        alert("The VILLAINs have won! It is a dark day...");
+    }else if (villain.innerText === hero.innerText){
+        alert('Our powers are too evenly matched!');
+    }
 
 
 
 
+}
 
 
 
@@ -185,22 +211,86 @@ function renderSuperhero(superhero){
         
     if(superhero.results[0].biography.alignment === 'good'){
         let img = document.createElement('img');
+        let div = document.createElement('div');
+        let h5 = document.createElement('h5');
+        let bttn = document.createElement('input');
+        bttn.setAttribute('type','submit');
+        
+        calcTotalPower(superhero);
+
         img.src = superhero.results[0].image.url;
+        h5.innerText = `Superscore: ${superhero.results[0].Total}`;
 
         img.addEventListener('click', () => superClick(superhero))
+        
 
-        heroBin.append(img);
-        battle(superhero);
+        div.append(img);
+        div.append(h5);
+        div.append(bttn);
+
+        bttn.addEventListener('click', ()=> {
+            //move image and superscore div to battle section when clicked
+            // e.preventDefault();
+            let heroImg = superhero.results[0].image.url;
+            let heroScore = `Superscore: ${superhero.results[0].Total}`;
+            let heroContain = document.getElementById('hero-card');
+            let imgContain = document.getElementById('heroImg');
+            let score = document.getElementById('hero-score');
+         
+
+            imgContain.src = heroImg;
+
+            score.innerText = heroScore;
+
+            heroContain.append(score);
+
+        })
+
+        heroBin.append(div);
+
+        
+        
 
     }else if( superhero.results[0].biography.alignment === 'bad'){
-        let villain = superhero;
         let img = document.createElement('img');
+        let div = document.createElement('div');
+        let h5 = document.createElement('h5');
+        let bttn = document.createElement('input');
+        bttn.setAttribute('type','submit');
+
+        calcTotalPower(superhero);
+
         img.src = superhero.results[0].image.url;
+        h5.innerText = `Superscore: ${superhero.results[0].Total}`;
 
         img.addEventListener('click', () => superClick(superhero));
 
-        villainBin.append(img);
-        battle(superhero,villain);
+        div.append(img);
+        div.append(h5);
+        div.append(bttn);
+        
+        bttn.addEventListener('click', ()=> {
+            //move image and superscore div to battle section when clicked
+            // e.preventDefault();
+            let villainImg = superhero.results[0].image.url;
+            let villainScore = `Superscore: ${superhero.results[0].Total}`;
+            let villainContain = document.getElementById('villain-card');
+            let imgContain = document.getElementById('villainImg');
+            let score = document.getElementById('villain-score');
+
+            imgContain.src = villainImg;
+
+            score.append(villainScore);
+
+            villainContain.append(score);
+
+        })
+
+
+
+
+
+        villainBin.append(div);
     }
 
 
