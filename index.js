@@ -215,7 +215,8 @@ function renderSuperhero(superhero){
         let h5 = document.createElement('h5');
         let bttn = document.createElement('input');
         bttn.setAttribute('type','submit');
-        
+        bttn.setAttribute('value','Send to battle!');
+
         calcTotalPower(superhero);
 
         img.src = superhero.results[0].image.url;
@@ -257,6 +258,7 @@ function renderSuperhero(superhero){
         let h5 = document.createElement('h5');
         let bttn = document.createElement('input');
         bttn.setAttribute('type','submit');
+        bttn.setAttribute('value','Send to battle!')
 
         calcTotalPower(superhero);
 
