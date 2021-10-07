@@ -1,6 +1,6 @@
 const baseURL = 'https://superheroapi.com/api.php/1856344077860375/'
 
-//id-powerstats,image,bi
+
 
 let headerImgContainer = document.getElementById('header-image-container');
 
@@ -22,7 +22,7 @@ let superheroCard = document.getElementById('superhero-Card');
 let counter = document.getElementById('counter');
 let likeBttn = document.getElementById('like');
 let dislikeBttn = document.getElementById('dislike');
-// let count = counter.innerText;
+
 let h3 = document.getElementById('count');
 
 
@@ -39,13 +39,13 @@ commentForm.addEventListener('submit', e => {
     let comment = commentInput.value;
     li.append(comment);
     commentList.appendChild(li);
-    // commentBox.append('  ||  ' + comment);
+    
     
 })
 
-// //3 GOALS FOR TOODAY
+// // GOALS FOR TOODAY
 // 1.MAKES COMMENTS CARRY WITH EACH card
-// 2.GET THE BATTLE FUNCTION TO Work;
+
 
 
 function calcTotalPower(hero){
@@ -55,27 +55,17 @@ function calcTotalPower(hero){
     let heroCombat = hero.results[0].powerstats.combat;
     let heroPower = hero.results[0].powerstats.power;
 
-    // let villainIntel = villain.results[0].powerstats.intelligence;
-    // let villainStrength = villain.results[0].powerstats.strength;
-    // let villainSpeed = villain.results[0].powerstats.speed;
-    // let villainCombat = villain.results[0].powerstats.combat;
-    // let villainPower = villain.results[0].powerstats.power;
+    
     heroTotal = parseInt(heroIntel) + parseInt(heroStrength) + parseInt(heroSpeed) + parseInt(heroCombat) + parseInt(heroPower);
     hero.results[0].Total = heroTotal;
-    console.log(heroTotal)
-    console.log(hero)
+    
 
 
 
-    // villainTotal = villainIntel + villainStrength + villainSpeed + villainCombat + villainPower;
-
-    // if(heroTotal > villainTotal){
-
-    // }
+    
 }
 let fightBttn = document.getElementById('fight-bttn');
-// let heroCard = document.getElementById('hero-card');
-// let villainCard = document.getElementById('villain-card');
+
 let heroScore = document.getElementById('hero-score');
 let villainScore = document.getElementById('villain-score');
 
@@ -98,17 +88,6 @@ function battle(villain, hero){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 likeBttn.addEventListener('click',() => {
     let currNum = h3.innerText;
     currNum++;
@@ -129,7 +108,7 @@ searchForm.addEventListener('submit', e => {
     let name = searchInput.value
     const searchName_URL = `${baseURL}search/${name}`;
     
-    // console.log(searchInput.value)
+    
 
 
     fetch(searchName_URL)
@@ -273,7 +252,7 @@ function renderSuperhero(superhero){
         
         bttn.addEventListener('click', ()=> {
             //move image and superscore div to battle section when clicked
-            // e.preventDefault();
+            
             let villainImg = superhero.results[0].image.url;
             let villainScore = `Superscore: ${superhero.results[0].Total}`;
             let villainContain = document.getElementById('villain-card');
@@ -298,10 +277,7 @@ function renderSuperhero(superhero){
 
 
 
-    // let img = document.createElement('img');
-    // img.src = superhero.results[0].image.url;
-
-    // superContain.append(img);
+    
 }
 
 
