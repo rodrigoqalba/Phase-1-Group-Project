@@ -39,7 +39,7 @@ commentForm.addEventListener('submit', e => {
     let comment = commentInput.value;
     li.append(comment);
     commentList.appendChild(li);
-    
+    commentForm.reset();
     
 })
 
@@ -87,26 +87,35 @@ function battle(villain, hero){
 
 }
 
+function likes(){
+    likeBttn.addEventListener('click',() => {
+        let currNum = h3.innerText;
+        currNum++;
+        let newCount = currNum;
+        h3.textContent= newCount;
+    })
 
-likeBttn.addEventListener('click',() => {
-    let currNum = h3.innerText;
-    currNum++;
-    let newCount = currNum;
-    h3.textContent= newCount;
-})
 
-dislikeBttn.addEventListener('click', ()=>{
-    let currNum = h3.innerText;
-    currNum--;
-    let newCount = currNum;
-    h3.textContent = newCount;
-})
+    dislikeBttn.addEventListener('click', ()=>{
+        let currNum = h3.innerText;
+        currNum--;
+        let newCount = currNum;
+        h3.textContent = newCount;
+    })
+    // let likeCount = document.getElementById('count');
+    // let counter = parseInt(likeCount.innerText);
+
+    // hero.results[0].likes = counter;
+}
+
+
 
 
 searchForm.addEventListener('submit', e => {
     e.preventDefault();
     let name = searchInput.value
     const searchName_URL = `${baseURL}search/${name}`;
+    // countLikes();
     
     
 
@@ -118,16 +127,22 @@ searchForm.addEventListener('submit', e => {
             renderSuperhero(item);
         })
 
-    
+    searchForm.reset();
 })
 
 let superContain = document.getElementById('superhero-container');
 let heroBin = document.getElementById('hero-bin');
 let villainBin = document.getElementById('villain-bin');
-let likeCount = {};
 
 function superClick(superhero){
+    countLikes(superhero);
+
+
     let card = document.getElementById('card-container');
+
+    let likes = card.querySelector('#count');
+    likes.innerText = superhero.results[0].likes;
+
 
     let name = card.querySelector('.superhero-name');
     name.innerText = superhero.results[0].name;
@@ -153,15 +168,70 @@ function superClick(superhero){
     let publisher = card.querySelector('.publisher');
     publisher.innerText = `Publisher: ${superhero.results[0].biography.publisher}`;
 
-    let currLikes = card.querySelector('#count');
-    currLikes.innerText = likeCount.value;
+
+
 }
+
+
+
+// const countLikes = (currlikes) => {
+//     // superhero.results[0].likes = currLikes;
+//     let count = document.getElementById('count');
+//     let currLikes = parseInt(count.innerText);
+
+//     }
+
+
+let newForm = document.getElementById('add-char');
+
+newForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let newHero = {};
+
+    newHero.name = e.target.supname.value;
+    newHero.image = e.target.img.value;
+    newHero.fullName = e.target.fullname.value;
+    newHero.aliases = e.target.alias.value;
+
+
+    let newChar = document.createElement('div');
+    let rookieCard = document.getElementById('rookie');
+    let name = document.createElement('h3');
+    let img = document.createElement('img');
+    let fullName = document.createElement('h4');
+    let aliases = document.createElement('h5');
+
+
+    name.innerText = newHero.name;
+    img.src = newHero.image;
+    fullName.innerText = `Full Name: ${newHero.fullName}`;
+    aliases.innerText = `Known Aliases: ${newHero.aliases}`;
+
+    
+    newChar.append(name);
+    newChar.append(img);
+    newChar.append(fullName);
+    newChar.append(aliases);
+
+
+    rookieCard.append(newChar)
+
+
+
+    newForm.reset();
+})
 
 
 
 
 
 function renderSuperhero(superhero){
+    // superhero.results[0].likes = 0;
+    // let likes = superhero.results[0].likes;
+    let likeCount = document.getElementById('count');
+
+    likeCount.innerText = 0;
+
     //insert heroname
     heroName.innerText = superhero.results[0].name;
     //insert image 
@@ -180,31 +250,36 @@ function renderSuperhero(superhero){
     //insert publisher
     publisher.innerText = `Publisher: ${superhero.results[0].biography.publisher}`;
 
-
-    let count = document.getElementById('count')
-    let likes = count.innerText;
-    likeCount.key = superhero.results[0].name;
-    likeCount.value = likes;
+    
 
     
-        
+
+
+    // likeCount.key = superhero.results[0].name;
+    // likeCount.value = likes;
     if(superhero.results[0].biography.alignment === 'good'){
         let img = document.createElement('img');
         let div = document.createElement('div');
         let h5 = document.createElement('h5');
+        let h4 = document.createElement('h4');
         let bttn = document.createElement('input');
+
+
         bttn.setAttribute('type','submit');
         bttn.setAttribute('value','Send to battle!');
 
         calcTotalPower(superhero);
 
+
         img.src = superhero.results[0].image.url;
+        h4.innerText = superhero.results[0].name;
         h5.innerText = `Superscore: ${superhero.results[0].Total}`;
 
         img.addEventListener('click', () => superClick(superhero))
         
 
         div.append(img);
+        div.append(h4);
         div.append(h5);
         div.append(bttn);
 
@@ -235,18 +310,26 @@ function renderSuperhero(superhero){
         let img = document.createElement('img');
         let div = document.createElement('div');
         let h5 = document.createElement('h5');
+        let h4 = document.createElement('h4');
         let bttn = document.createElement('input');
+        
+        // let counter = h3.innerText;
+        // superhero.results[0].likes = counter;
+
         bttn.setAttribute('type','submit');
         bttn.setAttribute('value','Send to battle!')
 
         calcTotalPower(superhero);
 
+
         img.src = superhero.results[0].image.url;
+        h4.innerText = superhero.results[0].name;
         h5.innerText = `Superscore: ${superhero.results[0].Total}`;
 
         img.addEventListener('click', () => superClick(superhero));
 
         div.append(img);
+        div.append(h4);
         div.append(h5);
         div.append(bttn);
         
@@ -261,27 +344,17 @@ function renderSuperhero(superhero){
 
             imgContain.src = villainImg;
 
-            score.append(villainScore);
+            score.innerText = villainScore;
 
             villainContain.append(score);
 
         })
-
-
-
-
-
         villainBin.append(div);
     }
 
-
-
-
-    
 }
 
-
-
+likes();
 
 fetch (baseURL, {
     method: 'GET',

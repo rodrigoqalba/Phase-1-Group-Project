@@ -1,5 +1,5 @@
 # Phase-1-Group-Project
-project member - Rodrigo Alba, Steve Risso, and Kerny
+project member -  Steve Risso
 
 run this commmand to get the background started:
 
@@ -15,7 +15,7 @@ MVP
     - Have a ‘click’ event listener that will increment or decrement a TOTAL like number. Number will go up if ‘like button’ is clicked and Number will go down if ‘dislike button’  is clicked 
     - like button 
     - dislike button
-3. User is able to comment under the image of the superhero
+3. User is able to comment on superheros
     - Have a ‘submit’ event listener on a ‘comment form’ that will post a user’s text input to a comment list under each picture when submitted
 
 STRETCH GOALS
@@ -24,4 +24,4 @@ STRETCH GOALS
 2.user is able to take two superheroes and. battle them
     -the powerstats of the cards can be compared and the one with a higher number will win battle
  
-3.use can view additional inforrmattion about the superhero with a 'info'button
+
